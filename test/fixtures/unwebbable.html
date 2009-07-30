@@ -1,0 +1,356 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+
+<head>
+	<title>A List Apart: Articles: Unwebbable</title>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<link rel="alternate" type="application/rss+xml" title="A List Apart main RSS feed" href="http://www.alistapart.com/site/rss" />
+	<link rel="stylesheet" type="text/css" href="/css/print.css" media="print" /> 
+	<script type="text/javascript">if(top!=self){top.location.replace(self.location.href);}</script>
+	<link rel="stylesheet" href="/css/article.css" type="text/css" media="all" />
+	<style type="text/css">
+		@import url(/css/288.css);
+	</style>
+	
+		<style type="text/css" media="screen">
+		ul li ul { margin-top: 10px; }
+
+ul li ol { margin-top: 10px; }
+	</style>
+	</head>
+
+
+<body class="articles" onload="">
+
+<ul id="navbar">
+  <li id="articles"><a href="http://www.alistapart.com/articles/" title="Articles">Articles</a></li>
+  <li id="topics"><a href="http://www.alistapart.com/topics/" title="Topics">Topics</a></li>
+  <li id="about"><a href="http://www.alistapart.com/about/" title="About">About</a></li>
+  <li id="contact"><a href="http://www.alistapart.com/contact/" title="Contact">Contact</a></li>
+  <li id="contribute"><a href="http://www.alistapart.com/contribute/" title="Contribute">Contribute</a></li>
+  <li id="feed"><a href="http://www.alistapart.com/feed/" title="Feed">Feed</a></li>
+</ul>
+<h1 id="masthead"><a href="http://www.alistapart.com/"><img src="/pix/alalogo.gif" alt="A LIST Apart: For People Who Make Websites" /></a></h1>
+
+
+<div id="ish">
+	<a href="http://www.alistapart.com/issues/288" title="Issue 288">No. <em>288</em></a>
+</div>
+
+
+<div id="main">
+	
+	
+	
+	
+	<div id="content" class="column">
+		
+		<div class="ishinfo">July <b>21, 2009</b></div>
+		
+		<h1 class="title"><a href="http://www.alistapart.com/articles/unwebbable/">Unwebbable</a></h1>
+		<h3 class="byline">
+			by 	<a href="http://www.alistapart.com/authors/c/joeclark"> Joe Clark</a>
+
+
+		</h3>
+		
+		<ul id="metastuff">
+						<li>
+				Published in: <a href="http://www.alistapart.com/topics/topic/htmlxhtml/" title="HTML and XHTML">HTML and XHTML</a>
+									<b>|</b>
+							</li>
+							<li class="discuss">
+					<p><a href="http://www.alistapart.com/comments/unwebbable/">Discuss this article &raquo;</a></p>
+				</li>
+					</ul>
+		
+		<div id="articletext">
+			<div class="illustration right half"><img src="/d/unwebbable/unwebbable.jpg" alt="Unwebbable" /></div>
+
+<p>
+<strong>It&#8217;s time we came to grips with the fact that not every &#8220;document&#8221; can be a &#8220;web page.&#8221; Some forms of writing just cannot be expressed in HTML&#8212;or they need to be bent and distorted to do so. But for once, XML might actually help.
+</strong></p>
+
+<p>
+The creation myth of the web tells us that Tim Berners-Lee invented HTML as a means of publishing physics research papers. True? It doesn&#8217;t matter; it&#8217;s a founding legend of the web whose legacy continues to this day. You can gin up as many web applications as you want, but the web is mostly still a place to publish <em>documents</em>.
+</p>
+
+<p>
+The web is replete with projects to &#8220;digitize legacy content&#8221;&#8212;patent applications, books, photographs, everything. While photographs might survive well as JPEGs or TIFFs (disregarding accessibility issues for a moment), the bulk of this legacy content requires semantic markup for computers to understand it. A sheet of paper provides complete authorial freedom, but that freedom can translate poorly to the coarse semantics of HTML. The digitization craze&#8212;that&#8217;s what it is&#8212;crashes headlong into HTML semantics.
+</p>
+
+<p>
+Some documents cannot be published using HTML. In many cases, we shouldn&#8217;t even bother trying. In other cases, we have to radically change the appearance and structure of the document.  Ideally, we&#8217;ll start using custom XML document types&#8212;which, finally and at long last, might actually work.
+</p>
+
+<h2>The screenplay problem</h2>
+
+<p>
+An example of the conundrum of transferring print documents to the web, one that has become legendary in some circles, is the film screenplay. 
+</p>
+
+<p>
+A lot of people want to write a screenplay. The outcomes for most of these writers are the same: Nobody films and releases their movie. And they all go through the same phase&#8212;learning the generations-old &#8220;style&#8221; of screenplay formatting.
+</p>
+
+<div class="illustration full left"><img src="/d/unwebbable/die-hard-script.jpg" alt="Screenplay" /><p>Typewritten screenplay from <cite><a href="http://www.dailyscript.com/scripts/Die_Hard_2.pdf">Die Hard 2</a></cite>.</p></div>
+
+<p>
+Originating in the typewriter age, <a href="http://www.flickr.com/photos/joeclark/collections/72157621289042508/">screenplay layouts</a> are custom-engineered so that one printed page (in what we now call U.S. letter size) equals almost exactly one minute of onscreen time. Since most commercial movies run about two hours in length, typical Hollywood movie scripts are 118 to 122 pages long. 
+</p>
+
+<p>
+Typography is lousy; old typewriter fonts of yesteryear were errantly mapped onto today&#8217;s spindly Courier type. But as an example of <em>document engineering</em>, scripts are brilliant.
+</p>
+
+<ul>
+	<li>There&#8217;s an entire science involved in text indention. Text is rarely, if ever, &#8220;centered&#8221;; everything lines up at a <dfn>tab stop</dfn>, a concept that CSS expunges from the collective memory. (You could set left margins using the <a href="http://www.w3.org/TR/css3-values/#lengths" title="CSS3 Values and Units: Lengths"><code>ch</code> unit</a> in CSS3, but nobody does.)</li>
+	<li>With careful alignments like these, it&#8217;s easy to scan down a screenplay page. Semantic use of ALL CAPITALS aids scanning, and clearly does not live up to the purely mechanical name CSS gives it, &#8220;text-transform.&#8221;</li>
+</ul>
+<p>
+And now people want to transfer the format&#8212;intact&#8212;to the web. It&#8217;s not going to work.
+</p>
+
+<ul>
+<li>Web &#8220;pages&#8221; may be called that, but the term is metaphorical. It has nothing to do with sheets of paper that equate to screen time. (Right away that means a shooting script&#8217;s many headers and footers would disappear, since we&#8217;re dealing with only one &#8220;page.&#8221;)
+</li>
+<li>Nobody seriously intends screenplays on the web to have the same function they do in real life&#8212;getting read, getting optioned or bought, and getting shot. All of that happens on paper, not on Firefox.
+</li>
+<li>HTML (per se) <a href="http://www.alistapart.com/articles/semanticsinhtml5" title="A List Apart: Semantics in HTML5">is not extensible</a>. Extensible HTML (XHTML) has really not been extended. Hence the following truism is not going to change: HTML does not have enough tags for the semantics of screenplays, where nearly everything needs its own tag. 
+
+<ul>
+<li>Dialogue seems to be no problem, but dialogue is intermingled with screen and actor instructions, and in HTML both of those would just be placed in paragraph elements&#8212;even though the function, and expected appearance, differ drastically. </li>
+
+	<li>What about the myriad headings, including the names of people speaking and notations for the time of day and the manner of speech (often called slugs or sluglines)?  We have &#8220;a lot&#8221; of heading tags in HTML&#8212;six of them&#8212;but they are arranged hierarchically, not according to function. Would class names really suffice here&#8212;that is, <code>H2 class="slugline"</code> versus <code>H2 class="charactername"</code>? Really, the answer is no. Script headings and HTML headings are two different things.</li></ul>
+</li>
+
+<li>The real movie industry doesn&#8217;t need HTML in the first place; it already has viable electronic exchange formats for scripts.
+
+<ol>
+	<li>One is the proprietary format of <a href="http://www.finaldraft.com/products-and-services/final-draft/" title="‘The Industry Standard’">Final Draft</a>, the software that dominates the screenplay market the way MS Word dominates in offices. Open-source fanatics may look at this as one more delicious chance to inveigh against a proprietary format, but screenwriters have better things to worry about than open source. Anyway, Final Draft 8&#8217;s default document format <a href="http://www.finaldraft.com/products-and-services/final-draft/features.php?section=devfeatures#fileformat" title=".fdx, in fact">is now XML</a>.</li>
+	<li>The other is PDF. The movie business doesn&#8217;t have to care about accessibility, so even PDFs to which no accessibility features have been added suffice for script exchange. You don&#8217;t need <a href="http://www.alistapart.com/articles/pdf_accessibility" title="Facts and Opinions About PDF Accessibility">tagged PDF</a>, which also doesn&#8217;t have enough semantics for screenplays. (You could, in theory, write your own PDF tags, since they&#8217;re just XML.)</li>
+</ol>
+
+ </li></ul>
+
+<p>
+The quest to adapt scripts to the web recalls other &#8220;category errors,&#8221; to use Martin Amis&#8217;s phrase. Electronic commerce, we eventually figured out, does not take the form of &#8220;shopping malls&#8221; you &#8220;walk&#8221; through. &#8220;Magazines&#8221; and &#8220;catalogues&#8221; do not have discrete pages you flip (complete with sound effects) and dog-ear. &#8220;Web sites&#8221; do not <a href="http://blog.fawny.org/2008/09/07/billhillforte/" title="blog.fawny.org: Keep Bill Hill Off the Web">look like magazine layouts</a>, complete with multicolumn text and callouts.
+</p>
+
+<p>
+Tellingly, this quest recalls early television, which, conventional wisdom holds, behaved more like filmed stageplays. Bringing scripts to the web is noticeably worse than filming a stageplay.
+</p>
+
+<p>
+Now, people have <em>tried</em> to make  web pages look exactly like typewritten screenplays. The star of this show is  screenwriter and inveterate blogger <a href="http://JohnAugust.com/" title="JohnAugust.com">John August</a>. <a href="http://scrippets.org/" title="Scrippets.org">Scrippets</a>, August&#8217;s plug-in for WordPress, Blogger, and other systems, does everything it can to spin straw into gold.  Among other things, one of August&#8217;s use cases is perfect &#8220;screenplay&#8221; formatting when viewed in an RSS reader, and the only way to make that happen is through presentational HTML and inline styles. These are, of course, outmoded development methods.
+</p>
+
+<p>
+August pitches his project thus (emphasis added): &#8220;With Scrippets, you can add boxes of <em>nicely-formatted script</em> to your blog.&#8221; That&#8217;s actually a restatement of the problem&#8212;failed reliance on a page metaphor, failed efforts to duplicate typewriter typography, and failed attempts to replicate one-page-per-minute layout. Script formatting is &#8220;nice&#8221; for print,  but it&#8217;s wrong for the web&#8212;even for &#8220;little boxes&#8221; of script content. 
+</p>
+
+<p>
+Worse, Scrippets ignores whatever small contribution HTML semantics can offer in marking up a screenplay. Pretty much everything gets marked up as paragraphs, but not everything is a paragraph. This is a worse sin than loading up <code>H2</code>s with class names in an uphill battle to notate screenplay semantics.
+</p>
+
+<h3>The screenplay solution</h3>
+
+<p>
+The way to adapt scripts for the web is through cosmetic surgery. And we have a precedent for it. There&#8217;s a healthy market for screenplays published in book form. In fact, &#8220;the shooting script&#8221; is an actual U.S. trademark (from <a href="http://www.newmarketpress.com/category.asp?id=40" title="The Shooting Script&reg;">Newmarket Press</a>) for one series of book versions of movie screenplays.
+</p>
+
+<ul>
+<li>Some books just reprint typewritten screenplays at reduced size. This may make you feel like a pro, but what you should feel is cheated: You&#8217;re paying good money to read an author&#8217;s typewritten manuscript. Spindly Courier looks even worse in reduced size.</li>
+<li>
+Other books completely redesign <em>typewritten</em> screenplays into a design native to <em>book publishing</em>. In a typical layout, speaker names are run inline with dialogue, normal book margins are used, and there&#8217;s a huge compaction of vertical whitespace. Typewritten screenplays read quite well in their intended context&#8212;but so do screenplay books in their context.  (Retypeset scripts have also been used as <a href="http://www.flickr.com/photos/chrisnoessel/2650132816/" title="Learning English by script">language-learning aids</a>.)</li>
+</ul>
+
+<p>
+Hence to adapt this existing printed form to the web, you have to abandon all hope of duplicating original typescript formatting. You have to design something native to the web, with its relatively weak semantics and pageless or single-page architecture.
+</p>
+
+<ul>
+	<li>You could use HTML definition lists to mark up dialogue&#8212;<a href="http://www.w3.org/TR/html4/struct/lists.html#edef-DL" title="Lists in HTML documents">explicitly permitted in (W3C-brand) HTML</a>, <a href="http://www.whatwg.org/specs/web-apps/current-work/#the-dl-element" title="HTML5 spec: DL">explicitly banned</a> by Ian Hickson under HTML5. (There, <a href="http://www.whatwg.org/specs/web-apps/current-work/#the-dialog-element" title="HTML5 spec: DIALOG">use <code>DIALOG</code> instead</a>, even though the descendants of that tag, <code>DT</code> and <code>DD</code>, are the same descendants <code>DL</code> has.) </li>
+<li>You can <a href="http://www.script-o-rama.com/movie_scripts/b/the-birds-script-screenplay.html" title="As in ‘The Birds’">use <code>PRE</code></a> to fake indention and line breaks (but you can&#8217;t fake the division of a script into page<em>s</em>).</li>
+<li>You can   disregard text indention and just <a href="http://joeflood.com/screenplays_new/eurabia/" title="As in ‘Eurabia’">use <code>CENTER</code>ed text</a>.</li>
+	<li>You could, without too much of a stretch, mark up a script as a table.</li>
+	<li>You could just not bother too much with semantics, run character names (in bold or <code>STRONG</code>) inline with dialogue, and use HTML headings where feasible.</li>
+</ul>
+
+
+
+<h3>Other print formats that need transformation</h3>
+
+<ul>
+	<li><strong>Mastheads</strong>: The list of who does what at a magazine or newspaper is actually semantically complex, because each person&#8217;s title or the department they work in seems to be a heading. But a masthead marked up with <code>H1</code> through <code>H6</code> essentially pollutes the tag stream of the surrounding web page.</li>
+<li><strong>Callouts</strong> and <strong>sidebars</strong>: These structures, familiar from magazines, newspapers, and nonfiction books, cause serious confusion in creating a functioning document tree. (At what exact point in the tag stream are you expected to read the callout or sidebar?)</li>
+<li><strong>Footnotes</strong>: There isn&#8217;t a structure for footnotes in HTML (though there is in tagged PDF). Developers have tried all sorts of hacks, including JavaScript show/hide widgets and various rats&#8217; nests of links and reverse links. For literature fans, HTML&#8217;s lack of footnotes makes the work of the late David Foster Wallace functionally impossible to render on the web (especially his footnotes within footnotes).</li>
+<li><strong>Charticles</strong>: With origins commonly attributed to <cite><a href="http://fawny.org/spy/" title="Ten Years Ago in ‘Spy’">Spy</a></cite>, a charticle is an illustrated featurette with a lot more accompanying text than what a bare illustration has. By way of comparison, a Flickr photo <a href="http://www.flickr.com/photos/fernandofelix/1382869443/" title="As in this example from Fernando Felix">festooned with notes</a> is functionally identical to a charticle, but HTML has no semantics for it.</li>
+<li><strong>Math and science</strong>: Yes, that old chestnut. Before you exclaim &#8220;MathML!&#8221; the way a pensioner might yell out &#8220;Bingo!,&#8221; understand that barely anybody uses MathML on real web pages due to serious authoring difficulty&#8212;physicist <a href="http://golem.ph.utexas.edu/~distler/blog/" title="With his blog Musings">Jacques Distler</a> remains among the very few who do.</li>
+</ul>
+
+
+<h2>How do we solve the problem?</h2>
+
+<p>
+Armed with this knowledge, what are we going to do? Prediction: nothing. People will continue to fake the appearance of scripts and use John August–caliber presentational code. But we do have an alternative.
+</p>
+
+<p>
+The case typified by screenplays is merely a new variation of the difficulty of encoding literature in XML. People have tried it time and time again over the years, but barely any DTD has gotten traction. People just want to mark up everything in HTML (<a href="http://diveintomark.org/archives/2009/03/27/dive-into-history-2009-edition" title="As Mark Pilgrim has learned">which has staying power</a>). Ill-trained authors mark up everything as a paragraph or a <code>DIV</code>.</p>
+
+<p>
+People seem to have taken the catchphrase &#8220;HTML is the lingua franca of the web&#8221; a bit too literally. HTML derives from SGML; XHTML is XML in a new pair of shoes. That&#8217;s four kinds of markup right there, but everybody acts as though there is only one kind, HTML. (Most of the time, browsers act like XTHML is HTML with trailing slashes.) Even electronic books are marked up as HTML, as the ePub file format is essentially XHTML 1.1 inside a container file&#8212;but that makes ePub files simultaneously HTML and XML. If we can spit those out, why can&#8217;t we spit out other kinds of XML?
+</p>
+
+<p>
+We are well past the stage where browsers could <em>not</em> be expected to display valid, well-formed XML. Browsers can now do exactly that. Variant literary document types could actually work now. But because they languished on the vine for so long, now it seems nobody wants to make them work. After all, isn&#8217;t our new future wrapped up in HTML5? Just as our old future was wrapped up in XHTML2?
+</p>
+
+<h2>Conclusion</h2>
+
+<p>
+The web is, of course, a wondrous thing, but its underlying language lacks the vocabulary to express even the things that humans have already expressed elsewhere. We ought to accept that some documents have to be reformatted for the web, at least if the goal is using plain HTML. To give web documents the rich semantics of print documents, XML is finally a viable option.<img src="/pix/eoai.gif" alt="" id="eoai" />
+</p>
+
+<div id="credits"> 
+<ul>
+ <li>Illustration by <a href="/authors/c/kevincornell">Kevin Cornell</a></li> 
+</ul> 
+</div>
+		</div>
+		
+		<div id="learnmore">
+		  <h2>Learn More</h2>
+		  <p>Related Topics: <a href="http://www.alistapart.com/topics/topic/htmlxhtml/" title="HTML and XHTML">HTML and XHTML</a></p>
+		</div>
+		
+					<div class="discuss">
+			  <h2>Discuss</h2>
+			  <p>Was it good for you, too?  <a href="http://www.alistapart.com/comments/unwebbable/">Join the discussion &raquo;</a></p>
+			</div>
+				
+		<div id="authorbio">
+			
+			<h2>About the Author</h2>
+			
+				<p>
+					<img src="/pix/authors/joe_clark.jpg" alt=" Joe Clark" />
+		
+		Toronto journalist and author <a href="http://joeclark.org/" id="joeclark-access" name="joeclark-access" title="Joe Clark">Joe Clark</a> used to work in the field of web accessibility. His ongoing missions are to raise enough money to start his own research project and to publish further books.
+	</p>
+
+
+		
+		</div>
+		
+	</div>
+	
+	<div id="sidebar" class="column">
+	
+		<div class="first">
+	<form method="post" action="http://www.alistapart.com/"  >
+<div class='hiddenFields'>
+<input type="hidden" name="ACT" value="19" />
+<input type="hidden" name="XID" value="51c03fb459d46dbaa5c114e2090b5ab722cebf7f" />
+<input type="hidden" name="RP" value="search/results" />
+<input type="hidden" name="NRP" value="" />
+<input type="hidden" name="RES" value="20" />
+<input type="hidden" name="status" value="" />
+<input type="hidden" name="weblog" value="articles|issues" />
+<input type="hidden" name="search_in" value="entries" />
+<input type="hidden" name="where" value="all" />
+<input type="hidden" name="site_id" value="1" />
+</div>
+
+
+	<h3>Search ALA</h3>
+	<input type="text" name="keywords" id="search" />
+	<input type="image" src="/pix/go.gif" id="submit" value="Search" />
+	<p><input type="checkbox" name="incdisc" id="incdisc" value="comments|entries" onclick="this.form.elements['search_in'].value = (this.checked) ? 'everywhere' : 'entries';" /> include discussions</p>
+	</form>
+</div>
+
+<div id="topiclist">
+	<h3>Topics</h3>
+
+	<ul>
+	
+	<li><a href="/topics/code/" title="Code">Code</a></li>
+	
+	<li><a href="/topics/content/" title="Content">Content</a></li>
+	
+	<li><a href="/topics/culture/" title="Culture">Culture</a></li>
+	
+	<li><a href="/topics/design/" title="Design">Design</a></li>
+	
+	<li><a href="/topics/process/" title="Process">Process</a></li>
+	
+	<li><a href="/topics/userscience/" title="User Science">User Science</a></li>
+	
+	</ul>
+
+</div>
+
+
+<div id="snapshot">
+  <h3>Snapshot</h3>
+  <p>The creation myth of the web tells us that Tim Berners-Lee invented HTML as a means of publishing physics research papers. True? It doesn’t matter; it’s a founding legend of the web whose legacy continues to this day. You can gin up as many web applications as you want, but the web is mostly still a place to publish documents.</p>
+</div>
+
+
+<div id="lucre">
+	<script type="text/javascript">
+	//<![CDATA[
+	(function(id) {
+	  document.write('<script type="text/javascript" src="' +
+	    'http://www.northmay.com/deck/deck' + id + '_js.php?' +
+	    (new Date().getTime()) + '"></' + 'script>');
+	})("AL");
+	//]]>
+	</script>
+	<p>
+	<a href="http://www.coudal.com/deck/">Ad via The Deck</a>
+	</p>
+</div>
+
+<div id="jobboard">
+	<h4>Job Board</h4>
+	<script src="http://www.37signals.com/svn/job.fcgi" type="text/javascript"></script>
+</div>
+
+<div id="colophon">
+
+	<p class="init">
+	Hosted by
+	<a href="http://mediatemple.net/"><img src="/pix/mediatemple.png" alt="Hosted by Media Temple" /></a>
+	</p>
+
+	<p>
+	Published by
+	<a href="http://happycog.com/"><img src="/pix/happycog.png" title="" alt="Published by Happy Cog" /></a>
+	</p>
+</div>
+		
+	</div>
+	
+	
+
+</div>
+
+<div id="footer">
+<p>
+<span class="issn">ISSN: <b>1534-0295</b></span>
+<span class="copyright"><a href="/copyright/" rel="license">Copyright &copy;</a> <span class="years">1998-2009</span> A List Apart Magazine and the authors.</span>
+</p>
+</div>
+
+<script src="/d/mint/?js" type="text/javascript"></script>
+
+
+</body>
+</html>
