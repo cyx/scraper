@@ -13,6 +13,17 @@ class ScraperTest < Test::Unit::TestCase
     end
   end
   
+  context "Scraper( <youtube url > )" do
+    setup do
+      @url = "http://www.youtube.com/watch?v=dLO2s7SDHJo&feature=rec-HM-r2"
+      @scraper = Scraper( :url => @url )
+    end
+
+    should "return a Scraper::Youtube object" do
+      assert_instance_of Scraper::Youtube, @scraper
+    end
+  end
+  
   context "given an article from A-List-Apart" do
     setup do
       @article = fixture_file('unwebbable.html')
@@ -36,4 +47,25 @@ class ScraperTest < Test::Unit::TestCase
       end
     end
   end
+  
+  context "Scraper( <alist apart content >)" do
+    setup do
+      @article = fixture_file('unwebbable.html')
+    end
+
+    should "return an instance of Article" do
+      assert_instance_of Scraper::Article, Scraper( :content => @article )
+    end
+  end
+  
+  context "Scraper( <alist apart url> )" do
+    setup do
+      @url = "http://www.alistapart.com/articles/unwebbable/"
+    end
+
+    should "return an instance of Article" do
+      assert_instance_of Scraper::Article, Scraper( :url => @url )
+    end
+  end
+  
 end

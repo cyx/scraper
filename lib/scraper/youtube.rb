@@ -34,10 +34,26 @@ module Scraper
     
     attr_reader :video_id
     
+    class << self
+      def =~( args )
+        if args[:url]
+          uri = URI.parse( args[:url] )
+          
+          if valid_host_name?( uri.host )
+            return true
+          end
+        end
+      end
+      
+      def valid_host_name?( host_name )
+        host_name.match(VALID_HOST_NAME)
+      end
+    end
+    
     def initialize( args = {} )
       uri = URI.parse(args[:url])
       
-      unless valid_host_name?(uri.host)
+      unless self.class.valid_host_name?(uri.host)
         raise ArgumentError, "URL must be from youtube.com"
       end
       
@@ -63,13 +79,13 @@ module Scraper
       end
     end
     
+    def thumbnail
+      "http://i.ytimg.com/vi/#{movie_id}/2.jpg"
+    end
+    
     private
       def movie_url
         :"http://www.youtube.com/v/#{video_id}&hl=en&fs=1"
-      end
-      
-      def valid_host_name?( host_name )
-        host_name.match(VALID_HOST_NAME)
       end
       
       def extract_video_id_from_query_string( query_string )

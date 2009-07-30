@@ -33,6 +33,10 @@ module Scraper
     GOOD_ID_NAMES = /^(post|hentry|entry[-]?(content|text|body)?|article[-]?(content|text|body)?)$/
     attr_reader :title
     
+    def self.=~( args )
+      return true
+    end
+    
     # Usage:
     # ======
     # 
