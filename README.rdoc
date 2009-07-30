@@ -1,0 +1,7 @@
+= scraper
+
+Description goes here.
+
+== Copyright
+
+Copyright (c) 2009 Cyril David. See LICENSE for details.
