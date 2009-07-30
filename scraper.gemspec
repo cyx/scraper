@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{scraper}
-  s.version = "0.1.0"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Cyril David"]
@@ -10,19 +10,19 @@ Gem::Specification.new do |s|
   s.email = %q{cyx.ucron@gmail.com}
   s.extra_rdoc_files = [
     "LICENSE",
-     "README.rdoc"
+     "README.markdown"
   ]
   s.files = [
     ".document",
      ".gitignore",
      "LICENSE",
-     "README.rdoc",
+     "README.markdown",
      "Rakefile",
      "VERSION",
      "lib/scraper.rb",
      "lib/scraper/article.rb",
      "lib/scraper/youtube.rb",
-     "o.html",
+     "scraper.gemspec",
      "test/article_test.rb",
      "test/fixtures/scraped.html",
      "test/fixtures/unwebbable.html",
