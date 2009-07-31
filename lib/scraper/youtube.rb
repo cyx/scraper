@@ -24,72 +24,62 @@ require 'builder'
 
 module Scraper
   class Youtube
-    VALID_HOST_NAME = /\A([a-z]+\.)?youtube\.com\z/
-    VIDEO_ID_MATCHER = /([^&]+&)?v=([^&]+)/
+    @@config = {
+      :valid_host_name      => /\A([a-z]+\.)?youtube\.com\z/,
+      :title_selector       => 'h1',
+      :description_selector => '.expand-content .description span',
+      :video_id_matcher     => /([^&]+&)?v=([^&]+)/,
+      :width                => 325,
+      :height               => 244,
+      :allow_full_screen    => true,
+      :mime_type            => 'application/x-shockwave-flash'
+    }
     
-    WIDTH             = 325
-    HEIGHT            = 244
-    ALLOW_FULL_SCREEN = true
-    MIME_TYPE         = 'application/x-shockwave-flash'
-    
-    attr_reader :video_id
-    
-    class << self
-      def =~( args )
-        if args[:url]
-          uri = URI.parse( args[:url] )
-          
-          if valid_host_name?( uri.host )
-            return true
-          end
-        end
-      end
-      
-      def valid_host_name?( host_name )
-        host_name.match(VALID_HOST_NAME)
-      end
-    end
+    extend Modules::Video::HostNameMatching
+    include Modules::Video::Common
     
     def initialize( args = {} )
-      uri = URI.parse(args[:url])
+      @uri = URI.parse(args[:url])
       
-      unless self.class.valid_host_name?(uri.host)
+      unless self.class.valid_host_name?(@uri.host)
         raise ArgumentError, "URL must be from youtube.com"
       end
       
-      unless @video_id = extract_video_id_from_query_string( uri.query )
+      unless @video_id = extract_video_id_from_query_string( @uri.query )
         raise ArgumentError, "URL must have a video ID in it"
       end
     end
     
     def html( args = {} )
-      w, h = args[:width] || WIDTH, args[:height] || HEIGHT
+      w, h = args[:width] || config[:width], args[:height] || config[:height]
       
       xml = Builder::XmlMarkup.new
       xml.object(:width => w, :height => h) do |object|
-        object.param :name => 'movie', :value => movie_url
-        object.param :name => 'allowFullScreen', :value => ALLOW_FULL_SCREEN
+        object.param :name => 'movie', :value => video_url
+        object.param(
+          :name => 'allowFullScreen', :value => config[:allow_full_screen]
+        )
         object.param :name => 'allowscriptaccess', :value => 'always'
-        object.embed :src => movie_url, 
-          :type => MIME_TYPE, 
+        object.embed :src => video_url, 
+          :type => config[:mime_type], 
           :allowscriptaccess => 'always', 
-          :allowfullscreen => ALLOW_FULL_SCREEN,
+          :allowfullscreen => config[:allow_full_screen],
           :width => w,
           :height => h
       end
     end
     
     def thumbnail
-      "http://i.ytimg.com/vi/#{movie_id}/2.jpg"
+      "http://i.ytimg.com/vi/#{video_id}/2.jpg"
     end
     
     private
-      def movie_url
+      def video_url
         :"http://www.youtube.com/v/#{video_id}&hl=en&fs=1"
       end
       
       def extract_video_id_from_query_string( query_string )
-        if matches = query_string.match(VIDEO_ID_MATCHER)
+        if matches = query_string.match(config[:video_id_matcher])
           matches[2]
         end
       end

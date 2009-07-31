@@ -37,6 +37,10 @@ class ScraperTest < Test::Unit::TestCase
     
     context "when extracting the actual content using the URL" do
       setup do
+        Scraper::Modules::Web.expects(:open).returns(
+          File.open(@@fixture_path + '/unwebbable.html', 'r')
+        )
+        
         @url = "http://www.alistapart.com/articles/unwebbable/"
         @scraper1 = Scraper::Article.new(:content => @article)
         @scraper2 = Scraper::Article.new(:url => @url)
@@ -60,6 +64,10 @@ class ScraperTest < Test::Unit::TestCase
   
   context "Scraper( <alist apart url> )" do
     setup do
+      Scraper::Modules::Web.expects(:open).returns(
+        File.open(@@fixture_path + '/unwebbable.html', 'r')
+      )
+      
       @url = "http://www.alistapart.com/articles/unwebbable/"
     end
 

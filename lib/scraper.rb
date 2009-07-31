@@ -1,7 +1,12 @@
+require 'rubygems'
+require 'activesupport'
+
 module Scraper
   autoload :Article, 'scraper/article'
   autoload :Youtube, 'scraper/youtube'
-  
+  autoload :Vimeo,   'scraper/vimeo'
+  autoload :Modules, 'scraper/modules'
+
   HANDLERS = [ :Youtube, :Article ]
 end
 

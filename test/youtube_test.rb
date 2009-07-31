@@ -2,6 +2,12 @@ require 'test_helper'
 require 'hpricot'
 
 class Scraper::YoutubeTest < Test::Unit::TestCase
+  def stub_open_uri!
+    Scraper::Modules::Web.expects(:open).returns(
+      File.open(@@fixture_path + '/dLO2s7SDHJo.html', 'r')
+    )
+  end
+  
   context "given http://www.youtube.com/watch?v=dLO2s7SDHJo&feature=rec-HM-r2" do
     setup do
       @youtube = Scraper::Youtube.new(
@@ -11,6 +17,23 @@ class Scraper::YoutubeTest < Test::Unit::TestCase
 
     should "have a video_id dLO2s7SDHJo" do
       assert_equal "dLO2s7SDHJo", @youtube.video_id
+    end
+    
+    should "have a title 'How to Hack Flash Games'" do
+      stub_open_uri!
+      
+      assert_equal 'How to Hack Flash Games', @youtube.title
+    end
+    
+    should "have a description Cheat Engine: ..." do
+      stub_open_uri!
+      
+      @desc = "Cheat Engine: http://cheatengine.org/downloads.php"
+      @desc << "  Music by: Reasoner http://reasoner.newgrounds.com"
+      @desc << "  Twitter: http://www.twitter.com/householdhacker"
+      @desc << "  We are going to show you how to hack any flash game using Cheat engine. You can hack games like bloons, desktop tower defense and many others."
+      
+      assert_equal @desc, @youtube.description
     end
   end
   

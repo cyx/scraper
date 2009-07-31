@@ -81,7 +81,7 @@ module Scraper
         if args[:content]
           return args[:content]
         elsif args[:url]
-          open(args[:url]).read
+          Modules::Web.open(args[:url]).read
         else
           raise ArgumentError, "Scraper::Article#initialize only accepts content or url as its argument options"
         end
