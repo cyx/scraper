@@ -10,7 +10,7 @@ module Scraper
             uri = URI.parse( args[:url] )
 
             if valid_host_name?( uri.host )
-              return true
+              return new( args )
             end
           end
         end

@@ -8,6 +8,25 @@ class Scraper::VimeoTest < Test::Unit::TestCase
     )
   end
   
+  context "given a url not from vimeo.com" do
+    should "raise an ArgumentError" do
+      assert_raise ArgumentError do
+        Scraper::Vimeo.new(:url => 'http://wikipedia.org/bla.html')
+      end
+    end
+  end
+  
+  context "a vimeo url without an id in it" do
+    setup do
+      @url = "http://vimeo.com/user1269265/videos"
+    end
+
+    should "raise an ArgumentError" do
+      assert_raise ArgumentError do
+        Scraper::Vimeo.new(:url => @url)
+      end
+    end
+  end
   
   context "given the canonical URL http://vimeo.com/5826468" do
     setup do

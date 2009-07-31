@@ -35,6 +35,10 @@ class Scraper::YoutubeTest < Test::Unit::TestCase
       
       assert_equal @desc, @youtube.description
     end
+    
+    should "have a thumbnail with it's video id in it" do
+      assert_match(/dLO2s7SDHJo/, @youtube.thumbnail)
+    end
   end
   
   context "given http://www.youtube.com/watch?feature=rec-HM-r2&v=dLO2s7SDHJo" do

@@ -34,7 +34,11 @@ module Scraper
     attr_reader :title
     
     def self.=~( args )
-      return true
+      begin
+        @article = Scraper::Article.new( args )
+      rescue Scraper::Article::Unsupported
+        return nil
+      end
     end
     
     # Usage:
@@ -99,8 +103,10 @@ module Scraper
       end
       
       def calculate_top_div( paragraphs )
-        scores = rate_and_score_paragraphs( paragraphs )
-        scores.sort_by { |e| e[:score] }.last[:node]
+        if scores = rate_and_score_paragraphs( paragraphs )
+          top = scores.sort_by { |e| e[:score] }.last
+          top && top[:node]
+        end
       end
       
       def rate_and_score_paragraphs( paragraphs )

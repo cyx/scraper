@@ -7,15 +7,16 @@ module Scraper
   autoload :Vimeo,   'scraper/vimeo'
   autoload :Modules, 'scraper/modules'
 
-  HANDLERS = [ :Youtube, :Article ]
+  HANDLERS = [ :Youtube, :Vimeo, :Article ]
 end
 
 def Scraper( args = {} )
-  if handler = Scraper::HANDLERS.detect { |h| Scraper.const_get(h) =~ args }
-    Scraper.const_get( handler ).new( args )
-  else
-    raise ArgumentError, "Scraper cannot handle content from #{args}"
+  Scraper::HANDLERS.each do |handler| 
+    if object = (Scraper.const_get(handler) =~ args)
+      return object
+    end
   end
+  raise ArgumentError, "Scraper cannot handle content from #{args}"
 end
 
 $LOAD_PATH.unshift( File.dirname(__FILE__) )

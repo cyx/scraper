@@ -1,6 +1,26 @@
 require 'test_helper'
 
 class Scraper::ArticleTest < Test::Unit::TestCase
+  context "given an unreadable content (youtube's homepage for ex)" do
+    setup do
+      @content = fixture_file('non-article.html') 
+    end
+
+    should "raise an Article::Unsupported error" do
+      assert_raise Scraper::Article::Unsupported do
+        Scraper::Article.new(:content => @content)
+      end
+    end
+  end
+  
+  context "given an argument :foobar" do
+    should "raise an ArgumentError" do
+      assert_raise ArgumentError do
+        Scraper::Article.new(:foobar => 'asehtusaeotu')
+      end
+    end
+  end
+  
   context "given the unwebbable A-List-Apart article" do
     setup do
       @fixture = fixture_file('unwebbable.html')

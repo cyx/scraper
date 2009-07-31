@@ -7,7 +7,7 @@ module Scraper
   class Vimeo
     @@config = {
       :valid_host_name      => /\A([a-z]+\.)?vimeo\.com\z/,
-      :video_id_matcher     => /([0-9]+)/,
+      :video_id_matcher     => /\A\/?([0-9]+)\z/,
       :title_selector       => '.title',
       :description_selector => "#description",
       :thumbnail_selector   => ".current.clip .style_wrap img",

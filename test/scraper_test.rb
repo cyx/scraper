@@ -24,6 +24,17 @@ class ScraperTest < Test::Unit::TestCase
     end
   end
   
+  context "Scraper( <vimeo url> )" do
+    setup do
+      @url = "http://vimeo.com/5826468"
+      @scraper = Scraper(:url => @url)
+    end
+
+    should "return a Scraper::Vimeo object" do
+      assert_instance_of Scraper::Vimeo, @scraper
+    end
+  end
+  
   context "given an article from A-List-Apart" do
     setup do
       @article = fixture_file('unwebbable.html')
@@ -73,6 +84,18 @@ class ScraperTest < Test::Unit::TestCase
 
     should "return an instance of Article" do
       assert_instance_of Scraper::Article, Scraper( :url => @url )
+    end
+  end
+  
+  context "given the non-article content" do
+    setup do
+      @content = fixture_file('non-article.html')
+    end
+
+    should "raise an ArgumentError (can't handle content from args)" do
+      assert_raise ArgumentError do
+        Scraper(:content => @content)
+      end
     end
   end
   
