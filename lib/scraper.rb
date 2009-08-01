@@ -5,9 +5,10 @@ module Scraper
   autoload :Article, 'scraper/article'
   autoload :Youtube, 'scraper/youtube'
   autoload :Vimeo,   'scraper/vimeo'
+  autoload :Flickr,  'scraper/flickr'
   autoload :Modules, 'scraper/modules'
 
-  HANDLERS = [ :Youtube, :Vimeo, :Article ]
+  HANDLERS = [ :Youtube, :Vimeo, :Flickr, :Article ]
 end
 
 def Scraper( args = {} )

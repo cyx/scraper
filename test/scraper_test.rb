@@ -35,6 +35,29 @@ class ScraperTest < Test::Unit::TestCase
     end
   end
   
+  context "Scraper( <flickr url> )" do
+    setup do
+      @url = "http://www.flickr.com/photos/80186783@N00/124484929/"
+      @scraper = Scraper(:url => @url)
+    end
+
+    should "return a Scraper::Flickr object" do
+      assert_instance_of Scraper::Flickr, @scraper
+    end
+    
+    context "when the url doesn't have the photo part at the end" do
+      setup do
+        @url = "http://www.flickr.com/photos/80186783@N00"
+        @scraper = Scraper(:url => @url)
+      end
+
+      should "return a Scraper::Flickr object still" do
+        assert_instance_of Scraper::Flickr, @scraper
+      end
+    end
+  end
+  
+  
   context "given an article from A-List-Apart" do
     setup do
       @article = fixture_file('unwebbable.html')

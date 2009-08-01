@@ -35,8 +35,9 @@ module Scraper
       :mime_type            => 'application/x-shockwave-flash'
     }
     
-    extend Modules::Video::HostNameMatching
+    extend  Modules::Video::HostNameMatching
     include Modules::Video::Common
+    include Modules::Web::MetaData
     
     def initialize( args = {} )
       @uri = URI.parse(args[:url])

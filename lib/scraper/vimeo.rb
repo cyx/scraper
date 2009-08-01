@@ -18,6 +18,7 @@ module Scraper
     
     extend  Modules::Video::HostNameMatching
     include Modules::Video::Common
+    include Modules::Web::MetaData
     
     def initialize( args = {} )
       @uri = URI.parse(args[:url])
