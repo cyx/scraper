@@ -2,11 +2,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{scraper}
-  s.version = "0.3.1"
+  s.version = "0.4.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Cyril David"]
-  s.date = %q{2009-07-31}
+  s.date = %q{2009-08-01}
   s.email = %q{cyx.ucron@gmail.com}
   s.extra_rdoc_files = [
     "LICENSE",
@@ -21,6 +21,7 @@ Gem::Specification.new do |s|
      "VERSION",
      "lib/scraper.rb",
      "lib/scraper/article.rb",
+     "lib/scraper/flickr.rb",
      "lib/scraper/modules.rb",
      "lib/scraper/modules/video.rb",
      "lib/scraper/modules/web.rb",
@@ -31,8 +32,11 @@ Gem::Specification.new do |s|
      "test/fixtures/5826468.html",
      "test/fixtures/dLO2s7SDHJo.html",
      "test/fixtures/non-article.html",
+     "test/fixtures/photostream.html",
      "test/fixtures/scraped.html",
+     "test/fixtures/show_photo.html",
      "test/fixtures/unwebbable.html",
+     "test/flickr_test.rb",
      "test/scraper_test.rb",
      "test/test_helper.rb",
      "test/vimeo_test.rb",
@@ -46,6 +50,7 @@ Gem::Specification.new do |s|
   s.summary = %q{TODO}
   s.test_files = [
     "test/article_test.rb",
+     "test/flickr_test.rb",
      "test/scraper_test.rb",
      "test/test_helper.rb",
      "test/vimeo_test.rb",
