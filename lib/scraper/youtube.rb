@@ -80,7 +80,7 @@ module Scraper
       end
       
       def extract_video_id_from_query_string( query_string )
-        if matches = query_string.match(config[:video_id_matcher])
+        if matches = query_string.to_s.match(config[:video_id_matcher])
           matches[2]
         end
       end
