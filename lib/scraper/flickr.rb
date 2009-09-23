@@ -66,5 +66,11 @@ module Scraper
         doc.search('link[rel=image_src]').first.attribute('href').to_s
       end
     end
+    
+    def img
+      unless photostream?
+        doc.search('.photoImgDiv img').first.attribute('src').to_s
+      end
+    end
   end
 end
