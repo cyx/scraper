@@ -2,13 +2,14 @@ require 'rubygems'
 require 'activesupport'
 
 module Scraper
-  autoload :Article, 'scraper/article'
-  autoload :Youtube, 'scraper/youtube'
-  autoload :Vimeo,   'scraper/vimeo'
-  autoload :Flickr,  'scraper/flickr'
-  autoload :Modules, 'scraper/modules'
+  autoload :Article,    'scraper/article'
+  autoload :Youtube,    'scraper/youtube'
+  autoload :Vimeo,      'scraper/vimeo'
+  autoload :Flickr,     'scraper/flickr'
+  autoload :Slideshare, 'scraper/slideshare'
+  autoload :Modules,    'scraper/modules'
 
-  HANDLERS = [ :Youtube, :Vimeo, :Flickr, :Article ]
+  HANDLERS = [ :Youtube, :Vimeo, :Flickr, :Slideshare, :Article ]
 end
 
 def Scraper( args = {} )
