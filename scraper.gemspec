@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Cyril David"]
-  s.date = %q{2009-09-23}
+  s.date = %q{2009-10-15}
   s.email = %q{cyx.ucron@gmail.com}
   s.extra_rdoc_files = [
     "LICENSE",
@@ -25,6 +25,7 @@ Gem::Specification.new do |s|
      "lib/scraper/modules.rb",
      "lib/scraper/modules/video.rb",
      "lib/scraper/modules/web.rb",
+     "lib/scraper/slideshare.rb",
      "lib/scraper/vimeo.rb",
      "lib/scraper/youtube.rb",
      "scraper.gemspec",
